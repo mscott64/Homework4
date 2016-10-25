@@ -1,12 +1,15 @@
 package assignment;
 
+import static assignment.StaticMethods.binarySearch;
+import static assignment.StaticMethods.stringMap;
+import static assignment.StaticMethods.didWin;
+import static assignment.StaticMethods.sumDigits;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static solution.StaticMethods.*;
 
 public class Tests {
 
