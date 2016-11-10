@@ -29,15 +29,15 @@ public class StaticMethods {
             return false;
         }
         int begin = 0;
-        int end = arr.length;
+        int end = arr.length - 1;
         int mid;
         while (begin <= end) {
             mid = getMiddleIndex(begin, end);
             if (arr[mid] == value) {
                 return true;
-            } else if(arr[mid] > value) {
+            } else if(value > arr[mid]) {
                 begin = mid + 1;
-            } else { // arr[mid] < value
+            } else { // value < arr[mid]
                 end = mid - 1;
             }
         }
@@ -60,7 +60,7 @@ public class StaticMethods {
         if (arr == null) {
             return map;
         }
-        for (int i = 0; i < arr.length - 2; i++) {
+        for (int i = 0; i < arr.length - 1; i += 2) {
             map.put(arr[i], arr[i+1]);
         }
         return map;
@@ -78,7 +78,7 @@ public class StaticMethods {
         if (game == null) {
             return false;
         }
-        boolean hasMiddle = game[1][1] == 'X';
+        boolean hasMiddle = game[1][1] == player;
         for (int i = 0, j = 2; i <= 2; i++, j--) {
             // Check for a vertical win
             if (player == game[0][i] && player == game[1][i] && player == game[2][i]) {
@@ -92,8 +92,6 @@ public class StaticMethods {
             if (hasMiddle) {
                 if (game[0][i] == player && game[2][j] == player) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         }
@@ -113,12 +111,12 @@ public class StaticMethods {
         }
         Set<Integer> digits = new HashSet<Integer>();
         while (value != 0) {
-            digits.add(value % 2);
+            digits.add(value % 10);
             value /= 10;
         }
         int sum = 0;
         for (int i : digits) {
-            sum += 1;
+            sum += i;
         }
         return sum;
     }
